@@ -18,15 +18,15 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-  -a Pokedex that can be searchable via a pokemon name or a number between 1 and 721.
+  -a search engine that uses a name or pokemon number to search up any given pokemon. It will be able to rend two pokemon at a time.
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  -people who love pokemon
+  -people who love pokemon and wish to know if a specific pokemon has a type advantage over another pokemon.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  -It should be able to search and render two pokemon at a time. Possible feature is to add a type advantage feature, based upon the first searched pokemon.
+  -This allows fellow pokemon trainers to figure out if a given pokemon has a type advantage over another pokemon. Knowing type advantages in battle is crucial for planning out strategies and game plans for battles. Simply by typing in a pokemon name or a pokedex number (1 -721), the app will render that pokemon. Type in a second to render the pokemon you want to compare against.  
 
 ## Problem ##
   > Describe the problem your product solves.
@@ -34,7 +34,7 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
-  -renders a visual of the pokemon as well gives the type of the pokemon.
+  -renders a visual of the pokemon as well gives the type and name of the pokemon. After two pokemon are rendered, it will figure out if there is type advantage, neutrality, or disadvantage based upon the first pokemon and compared to the second pokemon.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.

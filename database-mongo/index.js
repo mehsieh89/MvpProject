@@ -11,12 +11,12 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
+var PokeSchema = mongoose.Schema({
   quantity: Number,
   description: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Poke = mongoose.model('Poke', PokeSchema);
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
