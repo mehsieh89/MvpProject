@@ -8,6 +8,8 @@ var app = express();
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+app.use(bodyParser.json());
+
 app.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
@@ -22,7 +24,7 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/items', function (req, res) {
-  console.log('merp')
+  console.log(req.body)
   // items.selectAll(function(err, data) {
   //   if(err) {
   //     console.log('meow :<')

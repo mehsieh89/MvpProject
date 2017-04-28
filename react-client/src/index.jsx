@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
-// import PokeSearch from './components/PokeSearch.jsx';
+import PokeSearch from './components/PokeSearch.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,10 +13,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-   
+   this.pokeSearch()
   }
 
   pokeSearch(query) {
+    console.log(`${query} was searched`);
      $.ajax({
       type: 'GET', 
       url: 'http://127.0.0.1:3000/items',
@@ -36,9 +37,9 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Item List</h1>
-      {//<SearchPokemon onSearch={this.pokeSearch.bind(this)}/>
-      }
-       <List items={this.state.items}/>
+        <PokeSearch onSearch={this.pokeSearch.bind(this)}/>
+       {//<List items={this.state.items}/>
+     }
     </div>)
   }
 }

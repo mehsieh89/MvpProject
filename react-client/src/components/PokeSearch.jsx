@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SearchPokemon extends React.component {
+class PokeSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,8 +22,8 @@ class SearchPokemon extends React.component {
     return (<div>
       <h4>Search a pokemon!</h4>
       pokemon name or number between 1 -721: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
-      <button onClick={this.search.bind(this)}> add pokemon </button>
+      <button onClick={this.pokeSearch.bind(this)}> add pokemon </button>
     </div>) 
   }
 }
-export default Search;
+export default PokeSearch;
