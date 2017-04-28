@@ -18,27 +18,36 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  -a Pokedex that can be searchable via a pokemon name or a number between 1 and 721.
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  -people who love pokemon
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  -It should be able to search and render two pokemon at a time. Possible feature is to add a type advantage feature, based upon the first searched pokemon.
 
 ## Problem ##
   > Describe the problem your product solves.
+  -allows pokemon trainers to find out if their pokemon have a type advantage over another pokemon. Or if they simply want to know basic info about a specific pokemon.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  -renders a visual of the pokemon as well gives the type of the pokemon.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  -Everyone wants to be the very best, that no one ever was; this tool helps with that.
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  -Simply type in a pokemon name or a number between 1 - 721! 
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  -I found out that my Charmander had a type advantage over Bulbasaur!
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  -Improving the quality of life for all pokemon trainers! let's go!
