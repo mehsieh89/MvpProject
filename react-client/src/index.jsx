@@ -12,21 +12,22 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-   this.pokeSearch()
-  }
+  // componentDidMount() {
+  //  this.pokeSearch()
+  // }
 
   pokeSearch(query) {
     console.log(`${query} was searched`);
      $.ajax({
-      type: 'GET', 
+      type: 'POST', 
       url: 'http://127.0.0.1:3000/items',
       data: JSON.stringify({"query":`${query}`}),
+      contentType: 'application/json',
       success: (data) => {
         console.log('meow')
-        this.setState({
-          items: data
-        })
+        // this.setState({
+        //   items: data
+        // })
       },
       error: (err) => {
         console.log('WWWHHHYYYY');
