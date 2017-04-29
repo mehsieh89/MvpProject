@@ -8,18 +8,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      poke1: {}
+      poke1: {},
+      poke2: {}
     }
   }
 
   // componentDidMount() {
   //  this.pokeSearch()
   // }
+  poke2(query) {
+    this.pokeSearch()
+  }
+
   pokeSearch(query) {
-    console.log(`${query} was searched`);
+    // console.log(`${query} was searched`);
      $.ajax({
       type: 'get', 
-      url: 'http://127.0.0.1:3000/items/?query=' + `${query}`,
+      url: 'http://127.0.0.1:3000/items/?query=' + query,
       // data: JSON.stringify({"query":`${query}`}),
       // contentType: 'application/json',
       success: (data) => {
