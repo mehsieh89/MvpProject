@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 var Poke = require('../database-mongo');
 var request = require('request');
+// var Promise = require('bluebird');
 
 var app = express();
 
@@ -25,17 +26,23 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.use(bodyParser.json());
 
-app.post('/items', function (req, res) {
-  console.log(req.body.query)
-  // var options = {
-  // 	url: 'http://pokeapi.co/api/v2/' + req.body.query + '/'
-  // }
-  request('http://pokeapi.co/api/v2/pokemon/scizor/', function(err, res, data) {
-  	console.log('work?')
-  	var scizor = JSON.parse(data);
-  	console.log('scizor data', scizor);
-  });
-
+app.get('/items', function (req, res) {
+	var pokemonDataObj = {}
+  request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
+  	var pokemonData = JSON.parse(data);
+  	var typeArray = [];
+  	pokemonData.types.map(types => {
+      typeArray.push(types.type.name)
+  	})
+  	pokemonDataObj = {
+  	  name: pokemonData.forms[0].name,
+  	  type: typeArray,
+  	  spriteURL: pokemonData.sprites.front_default
+  	}
+  	console.log('inside of request', pokemonDataObj)
+  	// pokemonDataObj;
+  	res.send(pokemonDataObj);
+  })
   // items.selectAll(function(err, data) {
   //   if(err) {
   //     console.log('meow :<')
@@ -45,8 +52,8 @@ app.post('/items', function (req, res) {
   //     res.json(data);
   //   }
   // });
-  // res.send('meow-mix');
-  res.end()
+  // res.json(pokemonDataObj)
+  // console.log('outside', pokemonDataObj)
 });
 
 app.listen(3000, function() {

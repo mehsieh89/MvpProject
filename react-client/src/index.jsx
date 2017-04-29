@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      poke1: {}
     }
   }
 
@@ -16,15 +16,19 @@ class App extends React.Component {
   //  this.pokeSearch()
   // }
 
+
+
   pokeSearch(query) {
     console.log(`${query} was searched`);
      $.ajax({
-      type: 'POST', 
-      url: 'http://127.0.0.1:3000/items',
-      data: JSON.stringify({"query":`${query}`}),
-      contentType: 'application/json',
+      type: 'get', 
+      url: 'http://127.0.0.1:3000/items/?query=' + `${query}`,
+      // data: JSON.stringify({"query":`${query}`}),
+      // contentType: 'application/json',
       success: (data) => {
         console.log('meow')
+        console.log('yyyyaaattttaaaaa', data);
+        // console.log(data)
         // this.setState({
         //   items: data
         // })
