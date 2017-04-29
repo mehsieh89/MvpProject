@@ -19,7 +19,8 @@ class App extends React.Component {
         name: "Raichu",
         type: ['Electric'],
         spriteURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png'
-      }
+      },
+      history: {}
     }
   }
 
@@ -28,23 +29,21 @@ class App extends React.Component {
   // }
   pokeSearch(query) {
     // console.log(`${query} was searched`);
-     $.ajax({
+    $.ajax({
       type: 'get', 
       url: 'http://127.0.0.1:3000/pokesearch/?query=' + query,
-      // data: JSON.stringify({"query":`${query}`}),
-      // contentType: 'application/json',
       success: (data) => {
         this.setState ({poke1: data})
         console.log(this.state.poke1)
-      },
-      error: (err) => {
-        alert('That is not a pokemon!');
       }
+      // error: (err) => {
+      //   alert('That is not a pokemon!');
+      // }
     });
   }
 
   pokeSearch2(query) {
-      $.ajax({
+    $.ajax({
       type: 'get', 
       url: 'http://127.0.0.1:3000/pokesearch/?query=' + query,
       // data: JSON.stringify({"query":`${query}`}),
@@ -52,10 +51,24 @@ class App extends React.Component {
       success: (data) => {
         this.setState ({poke2: data})
         console.log(this.state.poke2)
-      },
-      error: (err) => {
-        alert('That is not a pokemon!');
       }
+      // error: (err) => {
+      //   alert('That is not a pokemon!');
+      // }
+    });
+  }
+
+  pokeHistory() {
+    $.ajax({
+      type: 'get', 
+      url: 'http://127.0.0.1:3000/pokeHistory',
+      success: (data) => {
+        this.setState ({history: data})
+        console.log(this.state.history)
+      }
+      // error: (err) => {
+      //   alert('That is not a pokemon!');
+      // }
     });
   }
 //double all the functions for the 2nd search!

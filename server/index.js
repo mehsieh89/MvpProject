@@ -45,14 +45,16 @@ app.get('/pokesearch', function (req, res) {
         name: pokemonDataObj.name,
         spriteURL: pokemonDataObj.spriteURL
       })
-      pokeEntry.save(function(err) {
-        if (err) {throw err;}
-      })
+      pokeEntry.save()
     	//store searched pokemon!
     	res.send(pokemonDataObj);
       res.end()
   })
 });
+
+app.get('/pokeHistory', function (req, res) {
+
+})
 
 
 app.listen(3000, function() {
