@@ -67,6 +67,8 @@ class App extends React.Component {
         <ListItem poke1={this.state.poke1}/>
         <PokeSearch2 onSearch2={this.pokeSearch2.bind(this)}/>
         <ListItem2 poke2={this.state.poke2}/>
+        {//<button> onClick={} > Search History </button>
+      }
     </div>)
   }
 }

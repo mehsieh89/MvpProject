@@ -2,7 +2,7 @@ var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-var Poke = require('../database-mongo');
+var Poke = require('../database-mongo/index.js');
 var request = require('request');
 // var Promise = require('bluebird');
 
@@ -27,24 +27,33 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 
 app.get('/pokesearch', function (req, res) {
+  // console.log('hi')
   // console.log(req.query.query)
 	var pokemonDataObj = {}
   request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
-  	var pokemonData = JSON.parse(data);
-  	var typeArray = [];
-  	pokemonData.types.map(types => {
-      typeArray.push(types.type.name)
-  	})
-  	pokemonDataObj = {
-  	  name: pokemonData.forms[0].name,
-  	  type: typeArray,
-  	  spriteURL: pokemonData.sprites.front_default
-  	}
-  	//store searched pokemon!
-  	res.send(pokemonDataObj);
-    res.end()
+    // if (err) {
+    //   pokemonDataObj.name = 'MissingNo.'
+    //   pokemonDataObj.type = ['Bird', 'Normal']
+    //   pokemonDataObj.spiriteURL = 'https://vignette1.wikia.nocookie.net/nintendo/images/8/85/MissingNoNormal.png/revision/latest?cb=20131114211037&path-prefix=en'
+    //   res.send(pokemonDataObj);
+    //   res.end()
+    // } else {
+    	var pokemonData = JSON.parse(data);
+    	var typeArray = [];
+    	pokemonData.types.map(types => {
+        typeArray.push(types.type.name)
+    	})
+    	pokemonDataObj = {
+    	  name: pokemonData.forms[0].name,
+    	  type: typeArray,
+    	  spriteURL: pokemonData.sprites.front_default
+    	}
+    	//store searched pokemon!
+    	res.send(pokemonDataObj);
+      res.end()
+    // }
   })
-  // items.selectAll(function(err, data) {
+  // Poke.selectAll(function(err, data) {
   //   if(err) {
   //     console.log('meow :<')
   //     res.sendStatus(500);

@@ -8,7 +8,7 @@ class PokeSearch extends React.Component {
     }; 
   }
 
-  onChange (e) {
+  changeHandler (e) {
   	this.setState ({
   	  value: e.target.value
   	});
@@ -26,7 +26,7 @@ class PokeSearch extends React.Component {
   render() {
     return (<div>
       <h4>Search a pokemon!</h4>
-      <input placeholder="Enter a PokeName! or a Pokedex number (1 -721)!!!" value={this.state.value} onChange={this.onChange.bind(this)} size='45'/>       
+      <input placeholder="Enter a PokeName! or a Pokedex number (1 -721)!!!" value={this.state.value} onChange={this.changeHandler.bind(this)} size='45'/>       
       <button onClick={this.pokeSearch.bind(this)}> add a pokemon </button>
     </div>) 
   }

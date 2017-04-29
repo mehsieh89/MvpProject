@@ -8,7 +8,7 @@ class PokeSearch2 extends React.Component {
     }; 
   }
 
-  onChange (e) {
+  changeHandler2 (e) {
   	this.setState ({
   	  value2: e.target.value
   	});
@@ -24,7 +24,7 @@ class PokeSearch2 extends React.Component {
   //do it silly, double all the functions!!!!!!!
   render() {
     return (<div>
-      <input placeholder="Another one! *dab*" value={this.state.value2} onChange={this.onChange.bind(this)} size='17'/>       
+      <input placeholder="Another one! *dab*" value={this.state.value2} onChange={this.changeHandler2.bind(this)} size='17'/>       
       <button onClick={this.pokeSearch2.bind(this)}> add a pokemon </button>
     </div>) 
   }
