@@ -16,6 +16,9 @@ class PokeSearch extends React.Component {
 
   pokeSearch() {
   	this.props.onSearch(this.state.value);
+    this.setState ({
+      value: ''
+    })
   }
 
   //do it silly, double all the functions!!!!!!!
@@ -23,10 +26,8 @@ class PokeSearch extends React.Component {
   render() {
     return (<div>
       <h4>Search a pokemon!</h4>
-      pokemon name or number between 1 -721: <input value={this.state.value} onChange={this.onChange.bind(this)}/>       
-      <button onClick={this.pokeSearch.bind(this)}> add pokemon </button>
-      pokemon name or number between 1 -721: <input value={this.state.value} onChange={this.onChange.bind(this)}/> 
-      <button onClick={this.pokeSearch.bind(this)}> add pokemon </button>
+      <input placeholder="Enter a PokeName! or a Pokedex number (1 -721)!!!" value={this.state.value} onChange={this.onChange.bind(this)} size='45'/>       
+      <button onClick={this.pokeSearch.bind(this)}> add a pokemon </button>
     </div>) 
   }
 }

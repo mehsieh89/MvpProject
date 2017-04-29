@@ -26,7 +26,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.use(bodyParser.json());
 
-app.get('/items', function (req, res) {
+app.get('/pokesearch', function (req, res) {
+  // console.log(req.query.query)
 	var pokemonDataObj = {}
   request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
   	var pokemonData = JSON.parse(data);
@@ -41,6 +42,7 @@ app.get('/items', function (req, res) {
   	}
   	//store searched pokemon!
   	res.send(pokemonDataObj);
+    res.end()
   })
   // items.selectAll(function(err, data) {
   //   if(err) {
@@ -54,6 +56,7 @@ app.get('/items', function (req, res) {
   // res.json(pokemonDataObj)
   // console.log('outside', pokemonDataObj)
 });
+
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
