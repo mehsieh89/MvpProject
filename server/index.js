@@ -39,8 +39,7 @@ app.get('/items', function (req, res) {
   	  type: typeArray,
   	  spriteURL: pokemonData.sprites.front_default
   	}
-  	console.log('inside of request', pokemonDataObj)
-  	// pokemonDataObj;
+  	//store searched pokemon!
   	res.send(pokemonDataObj);
   })
   // items.selectAll(function(err, data) {

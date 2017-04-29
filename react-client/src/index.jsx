@@ -15,9 +15,6 @@ class App extends React.Component {
   // componentDidMount() {
   //  this.pokeSearch()
   // }
-
-
-
   pokeSearch(query) {
     console.log(`${query} was searched`);
      $.ajax({
@@ -26,15 +23,11 @@ class App extends React.Component {
       // data: JSON.stringify({"query":`${query}`}),
       // contentType: 'application/json',
       success: (data) => {
-        console.log('meow')
-        console.log('yyyyaaattttaaaaa', data);
-        // console.log(data)
-        // this.setState({
-        //   items: data
-        // })
+        this.setState ({poke1: data})
+        console.log(this.state.poke1)
       },
       error: (err) => {
-        console.log('WWWHHHYYYY');
+        alert('That is not a pokemon!');
       }
     });
   }

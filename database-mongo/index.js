@@ -12,8 +12,8 @@ db.once('open', function() {
 });
 
 var PokeSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+  name: String,
+  spriteURL: String
 });
 
 var Poke = mongoose.model('Poke', PokeSchema);
