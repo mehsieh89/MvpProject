@@ -6,6 +6,7 @@ import ListItem2 from './components/ListItem2.jsx';
 import PokeSearch from './components/PokeSearch.jsx';
 import PokeSearch2 from './components/PokeSearch2.jsx';
 import History from './components/History.jsx';
+// import Battle from './components/Battle.jsx';
 
 
 class App extends React.Component {
@@ -25,21 +26,14 @@ class App extends React.Component {
       history: []
     }
   }
-  // componentDidMount() {
-  //  this.pokeSearch()
-  // }
+
   pokeSearch(query) {
-    // console.log(`${query} was searched`);
     $.ajax({
       type: 'get', 
       url: 'http://127.0.0.1:3000/pokesearch/?query=' + query,
       success: (data) => {
         this.setState ({poke1: data})
-        console.log(this.state.poke1)
       }
-      // error: (err) => {
-      //   alert('That is not a pokemon!');
-      // }
     });
   }
 
@@ -47,16 +41,14 @@ class App extends React.Component {
     $.ajax({
       type: 'get', 
       url: 'http://127.0.0.1:3000/pokesearch/?query=' + query,
-      // data: JSON.stringify({"query":`${query}`}),
-      // contentType: 'application/json',
       success: (data) => {
         this.setState ({poke2: data})
-        console.log(this.state.poke2)
       }
-      // error: (err) => {
-      //   alert('That is not a pokemon!');
-      // }
     });
+  }
+
+  battle() {
+
   }
 
   pokeHistory() {
@@ -65,8 +57,6 @@ class App extends React.Component {
       url: 'http://127.0.0.1:3000/pokeHistory',
       success: (data) => {
         this.setState ({history: data})
-        // console.log('great success!!!!!!!')
-        // console.log(this.state.history)
       }
     });
   }
@@ -79,6 +69,7 @@ class App extends React.Component {
         <ListItem poke1={this.state.poke1}/>
         <PokeSearch2 onSearch2={this.pokeSearch2.bind(this)}/>
         <ListItem2 poke2={this.state.poke2}/>
+        <button onClick={this.battle} > Battle! </button>
         <History history={this.state.history} pokeHistory={this.pokeHistory.bind(this)}/>
     </div>)
   }

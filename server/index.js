@@ -27,21 +27,21 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 
 app.get('/pokesearch', function (req, res) {
-  // console.log('hi')
-  // console.log(req.query.query)
+
 	var pokemonDataObj = {}
   request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
-    // console.log(data)
     	var pokemonData = JSON.parse(data);
     	var typeArray = [];
     	pokemonData.types.map(types => {
         typeArray.push(types.type.name)
     	})
+
     	pokemonDataObj = {
     	  name: pokemonData.forms[0].name,
     	  type: typeArray,
     	  spriteURL: pokemonData.sprites.front_default
     	}
+      
       var pokeEntry = new Poke ({
         name: pokemonDataObj.name,
         spriteURL: pokemonDataObj.spriteURL
@@ -56,7 +56,6 @@ app.get('/pokesearch', function (req, res) {
 app.get('/pokeHistory', function (req, res) {
   Poke.find({}, function(err, data) {
     if (err) throw err;
-    // console.log(data);
     res.send(data);
     res.end()
   })
