@@ -31,13 +31,6 @@ app.get('/pokesearch', function (req, res) {
   // console.log(req.query.query)
 	var pokemonDataObj = {}
   request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
-    // if (err) {
-    //   pokemonDataObj.name = 'MissingNo.'
-    //   pokemonDataObj.type = ['Bird', 'Normal']
-    //   pokemonDataObj.spiriteURL = 'https://vignette1.wikia.nocookie.net/nintendo/images/8/85/MissingNoNormal.png/revision/latest?cb=20131114211037&path-prefix=en'
-    //   res.send(pokemonDataObj);
-    //   res.end()
-    // } else {
     	var pokemonData = JSON.parse(data);
     	var typeArray = [];
     	pokemonData.types.map(types => {
@@ -48,22 +41,17 @@ app.get('/pokesearch', function (req, res) {
     	  type: typeArray,
     	  spriteURL: pokemonData.sprites.front_default
     	}
+      var pokeEntry = new Poke ({
+        name: pokemonDataObj.name,
+        spriteURL: pokemonDataObj.spriteURL
+      })
+      pokeEntry.save(function(err) {
+        if (err) {throw err;}
+      })
     	//store searched pokemon!
     	res.send(pokemonDataObj);
       res.end()
-    // }
   })
-  // Poke.selectAll(function(err, data) {
-  //   if(err) {
-  //     console.log('meow :<')
-  //     res.sendStatus(500);
-  //   } else {
-  //     console.log('get received!')	
-  //     res.json(data);
-  //   }
-  // });
-  // res.json(pokemonDataObj)
-  // console.log('outside', pokemonDataObj)
 });
 
 

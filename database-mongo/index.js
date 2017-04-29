@@ -12,20 +12,10 @@ db.once('open', function() {
 });
 
 var PokeSchema = mongoose.Schema({
-  name: String,
+  name: {type: String, unique: true, dropDups: true},
   spriteURL: String
 });
 
 var Poke = mongoose.model('Poke', PokeSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
-};
-
-module.exports.selectAll = selectAll;
+module.exports = Poke;
