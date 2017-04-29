@@ -18,6 +18,8 @@ class PokeSearch extends React.Component {
   	this.props.onSearch(this.state.value);
   }
 
+  //do it silly, double all the functions!!!!!!!
+
   render() {
     return (<div>
       <h4>Search a pokemon!</h4>

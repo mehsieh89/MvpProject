@@ -19,7 +19,7 @@ class App extends React.Component {
   poke2(query) {
     this.pokeSearch()
   }
-
+//double all the functions for the 2nd search!
   pokeSearch(query) {
     // console.log(`${query} was searched`);
      $.ajax({
