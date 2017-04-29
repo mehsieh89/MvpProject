@@ -5,6 +5,8 @@ import ListItem from './components/ListItem.jsx';
 import ListItem2 from './components/ListItem2.jsx';
 import PokeSearch from './components/PokeSearch.jsx';
 import PokeSearch2 from './components/PokeSearch2.jsx';
+import History from './components/History.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -20,10 +22,9 @@ class App extends React.Component {
         type: ['Electric'],
         spriteURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png'
       },
-      history: {}
+      history: []
     }
   }
-
   // componentDidMount() {
   //  this.pokeSearch()
   // }
@@ -64,11 +65,9 @@ class App extends React.Component {
       url: 'http://127.0.0.1:3000/pokeHistory',
       success: (data) => {
         this.setState ({history: data})
-        console.log(this.state.history)
+        // console.log('great success!!!!!!!')
+        // console.log(this.state.history)
       }
-      // error: (err) => {
-      //   alert('That is not a pokemon!');
-      // }
     });
   }
 //double all the functions for the 2nd search!
@@ -80,8 +79,7 @@ class App extends React.Component {
         <ListItem poke1={this.state.poke1}/>
         <PokeSearch2 onSearch2={this.pokeSearch2.bind(this)}/>
         <ListItem2 poke2={this.state.poke2}/>
-        {//<button> onClick={} > Search History </button>
-      }
+        <History history={this.state.history} pokeHistory={this.pokeHistory.bind(this)}/>
     </div>)
   }
 }

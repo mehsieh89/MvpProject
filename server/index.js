@@ -31,6 +31,7 @@ app.get('/pokesearch', function (req, res) {
   // console.log(req.query.query)
 	var pokemonDataObj = {}
   request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
+    // console.log(data)
     	var pokemonData = JSON.parse(data);
     	var typeArray = [];
     	pokemonData.types.map(types => {
@@ -53,7 +54,12 @@ app.get('/pokesearch', function (req, res) {
 });
 
 app.get('/pokeHistory', function (req, res) {
-
+  Poke.find({}, function(err, data) {
+    if (err) throw err;
+    // console.log(data);
+    res.send(data);
+    res.end()
+  })
 })
 
 
