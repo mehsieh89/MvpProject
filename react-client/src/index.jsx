@@ -6,8 +6,8 @@ import ListItem2 from './components/ListItem2.jsx';
 import PokeSearch from './components/PokeSearch.jsx';
 import PokeSearch2 from './components/PokeSearch2.jsx';
 import History from './components/History.jsx';
-// import Battle from './components/Battle.jsx';
-
+// import Battle from './components/Battle.js';
+import {strong, weak}  from './components/BattleData.js';
 
 class App extends React.Component {
   constructor(props) {
