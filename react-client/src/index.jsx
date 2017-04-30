@@ -62,7 +62,16 @@ class App extends React.Component {
         }
       }
     }
-    console.log(point);
+    if (point > 0) {
+      console.log(this.state.poke1.name + 'wins!');
+      alert(this.state.poke1.name + ' has advantage!')
+    } else if (point < 0) {
+      console.log(this.state.poke2.name + 'wins!');
+      alert(this.state.poke2.name + ' has advantage!')
+    } else {
+      console.log('NEITHER POKEMON WINS')
+      alert('Neither Pokemon has advantage!')
+    }
   }
 
   pokeHistory() {
