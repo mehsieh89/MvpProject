@@ -15,12 +15,12 @@ class App extends React.Component {
     this.state = { 
       poke1: {
         name: "Pikachu",
-        type: ['Electric'],
+        type: ['electric'],
         spriteURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
       },
       poke2: {
         name: "Raichu",
-        type: ['Electric'],
+        type: ['electric'],
         spriteURL: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/26.png'
       },
       history: []
@@ -48,7 +48,21 @@ class App extends React.Component {
   }
 
   battle() {
+    var poke1types = this.state.poke1.type;
+    var poke2types = this.state.poke2.type;
 
+    var point = 0;
+    for ( var i = 0; i < poke1types.length; i++ ) {
+      for ( var k = 0; k < poke2types.length; k++) {
+        if (strong[poke1types[i]].includes(poke2types[k])) {
+          point += 1;
+        }
+        if (weak[poke1types[i]].includes(poke2types[k])) {
+          point -= 1;
+        }
+      }
+    }
+    console.log(point);
   }
 
   pokeHistory() {
@@ -69,7 +83,7 @@ class App extends React.Component {
         <ListItem poke1={this.state.poke1}/>
         <PokeSearch2 onSearch2={this.pokeSearch2.bind(this)}/>
         <ListItem2 poke2={this.state.poke2}/>
-        <button onClick={this.battle} > Battle! </button>
+        <button onClick={this.battle.bind(this)} > Battle! </button>
         <History history={this.state.history} pokeHistory={this.pokeHistory.bind(this)}/>
     </div>)
   }
