@@ -26,40 +26,15 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.use(bodyParser.json());
 
-app.get('/pokesearch', function (req, res) {
-
-	var pokemonDataObj = {}
-  request('http://pokeapi.co/api/v2/pokemon/' + req.query.query + '/', function(err, response, data) {
-    	var pokemonData = JSON.parse(data);
-    	var typeArray = [];
-    	pokemonData.types.map(types => {
-        typeArray.push(types.type.name)
-    	})
-
-    	pokemonDataObj = {
-    	  name: pokemonData.forms[0].name,
-    	  type: typeArray,
-    	  spriteURL: pokemonData.sprites.front_default
-    	}
-      
-      var pokeEntry = new Poke ({
-        name: pokemonDataObj.name,
-        spriteURL: pokemonDataObj.spriteURL
-      })
-      pokeEntry.save()
-    	//store searched pokemon!
-    	res.send(pokemonDataObj);
-      res.end()
+app.get('/items', function (req, res) {
+    // url: 'https://api.spotify.com/v1/search/?q=name:neyo&type=album,track'
+  request('https://api.spotify.com/v1/search/?q=name:closer&type=track', (err, response, data) => {
+  console.log('hi');
+  console.log(data);
+  res.json(data);
+  res.end()
   })
 });
-
-app.get('/pokeHistory', function (req, res) {
-  Poke.find({}, function(err, data) {
-    if (err) throw err;
-    res.send(data);
-    res.end()
-  })
-})
 
 
 app.listen(3000, function() {
